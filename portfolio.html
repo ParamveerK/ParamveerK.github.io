@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramveer Kumar | Data Science Portfolio</title>
+    
+    <!-- Latin Modern Roman from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
+    
+    <style>
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --bg-primary: #fdfbf7;
+            --bg-sidebar: #f5f2eb;
+            --bg-card: #ffffff;
+            --accent: #8b4513;
+            --accent-light: #d4a574;
+            --border: #e0dcd4;
+            --shadow: rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Computer Modern Serif", "Latin Modern Roman", Georgia, serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        /* Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 280px minmax(0, 700px);
+            min-height: 100vh;
+            justify-content: center;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--bg-sidebar);
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            align-self: start;
+            transition: top 0s, bottom 0s;
+        }
+
+        .sidebar.stick-bottom {
+            top: auto;
+            bottom: 0;
+            align-self: end;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .profile h1 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.02em;
+        }
+
+        .profile .title {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-section h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 400;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .sidebar-section p,
+        .sidebar-section li {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-section ul {
+            list-style: none;
+        }
+
+        .sidebar-section li {
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .sidebar-section li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .contact-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .nav-links a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.4rem 0;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            padding-left: 0.5rem;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 4rem 3rem;
+        }
+
+        .main > header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .main > header h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 0.01em;
+        }
+
+        .main > header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 650px;
+        }
+
+        /* Project Sections */
+        .project-category {
+            margin-bottom: 3.5rem;
+        }
+
+        .project-category > h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .project-category > h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .project {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .project:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .project h3 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .project-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .project-links a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(139, 69, 19, 0.05);
+        }
+
+        .project-meta {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-style: italic;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+        }
+
+        .project-bullets {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .project-bullets li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.7rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .project-bullets li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        .project-tools {
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .project-tags {
+            display: inline;
+        }
+
+        .tag {
+            font-family: "Computer Modern Typewriter", "Courier New", monospace;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .tag::after {
+            content: " · ";
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .tag:last-child::after {
+            content: "";
+        }
+
+        /* Highlight for outcomes */
+        .outcome {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                padding: 2rem;
+            }
+
+            .main {
+                padding: 2.5rem 2rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+            }
+
+            .project-links {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main {
+                padding: 2rem 1.5rem;
+            }
+
+            .project {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="profile-image">P</div>
+                <h1>Paramveer Kumar</h1>
+                <p class="title">Data Scientist</p>
+            </div>
+
+            <div class="sidebar-section">
+                <h2>📍 About</h2>
+                <p>Hello! I'm a Chemistry PhD graduate transitioning into data science, having found that analysing data and building tools was always the most rewarding part of my research. I'm now applying that same rigour to data science and machine learning.</p>
+            </div>
+
+            <div class="sidebar-section">
+                <h2>🎓 Education</h2>
+                <ul>
+                    <li>PhD, University of Glasgow (2025)</li>
+                    <li>Integrated Masters (MChem), University of Oxford (2021)</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h2>🛠 Skills</h2>
+                <ul>
+                    <li>Python, Pandas, NumPy</li>
+                    <li>Matplotlib, Seaborn</li>
+                    <li>PostgresSQL</li>
+                    <li>Scikit-learn, XGBoost, Ridge, Lasso, Cross-validation</li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h2>📜 Courses/Certifications</h2>
+                <ul>
+                    <li>Associate Data Analyst in SQL Certificate (DataCamp)</li>
+                    <li>Intermediate Python (DataCamp)</li>
+                    <li>Introduction to Statistical Programming in R (University of Glasgow)</li>
+                    <li>Introduction to Python (University of Glasgow)</li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h2>📬 Contact</h2>
+                <div class="contact-links">
+                    <a href="https://github.com/ParamveerK" target="_blank">↗ GitHub</a>
+                    <a href="https://www.linkedin.com/in/paramveer-kumar/" target="_blank">↗ LinkedIn</a>
+                    <a href="mailto:paramveer.kumar@hotmail.com">↗ Email</a>
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#ml-projects">→ ML Projects</a>
+                <a href="#Data Analysis/Automation">→ Data Analysis/Automation</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <header>
+                <h1>Data Science Portfolio</h1>
+                <p>A collection of projects demonstrating machine learning, data analysis, and automation skills developed during my transition from chemistry research to data science.</p>
+            </header>
+
+            <!-- Machine Learning Projects -->
+            <section class="project-category" id="ml-projects">
+                <h2>Machine Learning</h2>
+
+                <article class="project">
+                    <div class="project-header">
+                        <h3>Ames House Prices</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ParamveerK/data-science-portfolio/blob/main/house-prices-regression/house-prices.ipynb" target="_blank">↗ GitHub</a>
+                        </div>
+                    </div>
+                    <p class="project-meta">Kaggle Competition · Regression</p>
+                    <p class="project-description">Regression model predicting residential property prices in Ames, Iowa using 79 variables.</p>
+                    <ul class="project-bullets">
+                        <li></li>
+                        <li>Developed regression models to predict house prices using scikit-learn and pandas</li>
+                        <li>Applied feature engineering techinqeus including handling missing data, categorical encoding, and log transformations</li>
+                        <li>Compared Linear Regresssion, Ridge, and Lasso models and performed hyperparameter tuning</li>
+                        <li>Achieved <span class="outcome">RMSE of 0.13</span> (log scale), placing in the top 40% of submissions</li>
+                    </ul>
+                    <p class="project-tools"><span class="tag">python</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">matplotlib</span><span class="tag">seaborn</span></p>
+                </article>
+
+                <article class="project">
+                    <div class="project-header">
+                        <h3>Titanic Survival</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ParamveerK/data-science-portfolio/blob/main/titanic-classification/titanic_intermediate_kaggle.ipynb" target="_blank">↗ GitHub</a>
+                        </div>
+                    </div>
+                    <p class="project-meta">Kaggle Competition · Classification</p>
+                    <p class="project-description">Binary classification model predicting passenger survival using demographic and ticket data from the Titanic dataset.</p>
+                    <ul class="project-bullets">
+                        <li>Performed exploratory data analysis on 891 passengers, identifying key survival predictors including gender, class, and age</li>
+                        <li>Engineered features including title extraction from names, and calculation of family size</li>
+                        <li>Assessed impact of feature engineering on Random Forest model performance</li>
+                        <li>Applied stratified k-fold cross-validation to ensure robust model evaluation on imbalanced classes</li>
+                        <li>Achieved <span class="outcome">78% accuracy</span> with optimised Random Forest, placing in top 30% of submissions</li>
+                    </ul>
+                    <p class="project-tools"><span class="tag">python</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">matplotlib</span><span class="tag">seaborn</span></p>
+                </article>
+            </section>
+
+            <!-- Data Analysis Projects -->
+            <section class="project-category" id="Data Analysis/Automation">
+                <h2>Data Analysis/Automation</h2>
+
+                <article class="project">
+                    <div class="project-header">
+                        <h3>UV-Vis Spectroscopy Automation</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ParamveerK/data-science-portfolio/tree/main/phd_uvvis_analysis" target="_blank">↗ GitHub</a>
+                        </div>
+                    </div>
+                    <p class="project-meta">Research Tool · Object-Oriented Python</p>
+                    <p class="project-description">Object-oriented Python toolkit replacing manual Excel workflows for spectroscopy data processing, dramatically reducing analysis time.</p>
+                    <ul class="project-bullets">
+                        <li>Designed modular class architecture for spectra loading, processing, and analysis with clear separation of workflows</li>
+                        <li>Implemented automated peak detection, baseline correction, and batch processing capabilities</li>
+                        <li>Reduced analysis time from <span class="outcome">hours to minutes</span> for typical experimental datasets</li>
+                    </ul>
+                    <p class="project-tools"><span class="tag">python</span><span class="tag">object-oriented-python</span><span class="tag">numpy</span><span class="tag">scipy</span></p>
+                </article>
+            </section>
+
+            <footer>
+                <p><a href="https://github.com/ParamveerK/data-science-portfolio/tree/main">View on GitHub</a></p>
+            </footer>
+        </main>
+    </div>
+</body>
+<script>
+(function() {
+    const sidebar = document.querySelector('.sidebar');
+    let lastScroll = 0;
+    let sidebarTop = 0;
+    
+    function updateSidebar() {
+        const sidebarHeight = sidebar.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        const scrollY = window.scrollY;
+        const scrollDelta = scrollY - lastScroll;
+        
+        // If sidebar fits in viewport, always stick to top
+        if (sidebarHeight <= viewportHeight) {
+            sidebar.classList.remove('stick-bottom');
+            sidebar.style.top = '0px';
+            lastScroll = scrollY;
+            return;
+        }
+        
+        // Sidebar is taller than viewport
+        const maxTop = 0;
+        const minTop = viewportHeight - sidebarHeight;
+        
+        if (scrollDelta > 0) {
+            // Scrolling down
+            sidebarTop = Math.max(minTop, sidebarTop - scrollDelta);
+        } else {
+            // Scrolling up
+            sidebarTop = Math.min(maxTop, sidebarTop - scrollDelta);
+        }
+        
+        sidebar.classList.remove('stick-bottom');
+        sidebar.style.top = sidebarTop + 'px';
+        
+        lastScroll = scrollY;
+    }
+    
+    window.addEventListener('scroll', updateSidebar, { passive: true });
+    window.addEventListener('resize', () => {
+        sidebarTop = parseInt(sidebar.style.top) || 0;
+        updateSidebar();
+    });
+})();
+</script>
+</html>
