@@ -400,6 +400,55 @@
             content: "";
         }
 
+        /* Project with image layout - float for text wrapping */
+        .project-content-wrapper {
+            overflow: hidden; /* clearfix */
+        }
+
+        .project-image {
+            float: right;
+            width: 200px;
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 160px;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background: var(--bg-primary);
+            padding: 8px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover .project-image img {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            .project-content-wrapper {
+                text-align: center;
+            }
+
+            .project-content-wrapper > p,
+            .project-content-wrapper > ul {
+                text-align: left;
+            }
+
+            .project-image {
+                float: none;
+                width: auto;
+                max-width: 280px;
+                margin: 0 auto 1rem;
+                display: inline-block;
+            }
+        }
+
         /* Highlight for outcomes */
         .outcome {
             color: var(--accent);
@@ -574,14 +623,19 @@
                             <a href="https://github.com/ParamveerK/data-science-portfolio/blob/main/ukri_classification/ukri_clustering_notebook.ipynb" target="_blank" rel="noopener noreferrer" aria-label="View UKRI Patent Analysis project on GitHub">↗ GitHub</a>
                         </div>
                     </div>
-                    <p class="project-meta">Data Science Portfolio · NLP & Clustering</p>
-                    <p class="project-description">Analysis of 5,400+ UK Research & Innovation IP outcomes, using NLP and clustering to determine the research field that achieves the most patents granted.</p>
-                    <ul class="project-bullets">
-                        <li>Generated semantic embeddings using AllenAI-SPECTER and compared dimensionality reduction methods (PCA, t-SNE, UMAP) with silhouette scoring</li>
-                        <li>Implemented automated cluster labelling via Hugging Face Inference API, successfully categorising unlisted departments</li>
-                        <li>Identified <span class="outcome">Regenerative Medicine</span> as having the highest patent grant rate (35%) among top-patented fields</li>
-                    </ul>
-                    <p class="project-tools"><span class="tag">python</span><span class="tag">sentence-transformers</span><span class="tag">scikit-learn</span><span class="tag">huggingface</span></p>
+                    <div class="project-content-wrapper">
+                        <div class="project-image">
+                            <img src="images/umap_plot.png" alt="UMAP cluster visualization of UKRI-funded patent data showing distinct research field clusters" loading="lazy">
+                        </div>
+                        <p class="project-meta">Data Science Portfolio · NLP & Clustering</p>
+                        <p class="project-description">Analysis of 5,400+ UK Research & Innovation IP outcomes, using NLP and clustering to determine the research field that achieves the most patents granted.</p>
+                        <ul class="project-bullets">
+                            <li>Generated semantic embeddings using AllenAI-SPECTER and compared dimensionality reduction methods (PCA, t-SNE, UMAP) with silhouette scoring</li>
+                            <li>Implemented automated cluster labelling via Hugging Face Inference API, successfully categorising unlisted departments</li>
+                            <li>Identified <span class="outcome">Regenerative Medicine</span> as having the highest patent grant rate (35%) among top-patented fields</li>
+                        </ul>
+                        <p class="project-tools"><span class="tag">python</span><span class="tag">sentence-transformers</span><span class="tag">scikit-learn</span><span class="tag">huggingface</span></p>
+                    </div>
                 </article>
 
                 <article class="project">
@@ -591,14 +645,19 @@
                             <a href="https://github.com/ParamveerK/data-science-portfolio/blob/main/energy_usage_sql/energy_usage.ipynb" target="_blank" rel="noopener noreferrer" aria-label="View Energy Tariff Analysis project on GitHub">↗ GitHub</a>
                         </div>
                     </div>
-                    <p class="project-meta">Personal Finance · SQL Analysis</p>
-                    <p class="project-description">SQL-driven analysis of 11,700+ half-hourly electricity readings to determine optimal tariff choice, comparing Economy 7 (day/night) pricing against fixed-rate alternatives.</p>
-                    <ul class="project-bullets">
-                        <li>Built analytical views in DuckDB to classify readings by time period, accounting for BST/GMT clock changes</li>
-                        <li>Calculated break-even threshold (39% night usage) and compared tariff scenarios</li>
-                        <li>Identified <span class="outcome">£227 savings over 8 months</span>, projecting £400+ annually</li>
-                    </ul>
-                    <p class="project-tools"><span class="tag">sql</span><span class="tag">duckdb</span><span class="tag">python</span><span class="tag">matplotlib</span></p>
+                    <div class="project-content-wrapper">
+                        <div class="project-image">
+                            <img src="images/cost_saving.png" alt="Bar chart showing Economy 7 tariff savings by month, with significant winter savings highlighted" loading="lazy">
+                        </div>
+                        <p class="project-meta">Personal Finance · SQL Analysis</p>
+                        <p class="project-description">SQL-driven analysis of 11,700+ half-hourly electricity readings to determine optimal tariff choice, comparing Economy 7 (day/night) pricing against fixed-rate alternatives.</p>
+                        <ul class="project-bullets">
+                            <li>Built analytical views in DuckDB to classify readings by time period, accounting for BST/GMT clock changes</li>
+                            <li>Calculated break-even threshold (39% night usage) and compared tariff scenarios</li>
+                            <li>Identified <span class="outcome">£227 savings over 8 months</span>, projecting £400+ annually</li>
+                        </ul>
+                        <p class="project-tools"><span class="tag">sql</span><span class="tag">duckdb</span><span class="tag">python</span><span class="tag">matplotlib</span></p>
+                    </div>
                 </article>
             
                 <article class="project">
@@ -649,14 +708,19 @@
                             <a href="https://github.com/ParamveerK/data-science-portfolio/tree/main/phd_uvvis_analysis" target="_blank" rel="noopener noreferrer" aria-label="View Spectroscopy Analysis project on GitHub">↗ GitHub</a>
                         </div>
                     </div>
-                    <p class="project-meta">Research Tool · Object-Oriented Python</p>
-                    <p class="project-description">Object-oriented Python toolkit replacing manual Excel workflows for spectroscopy data processing, dramatically reducing analysis time.</p>
-                    <ul class="project-bullets">
-                        <li>Designed modular class architecture for spectra loading, processing, and analysis with clear separation of workflows</li>
-                        <li>Implemented automated peak detection, baseline correction, and batch processing capabilities</li>
-                        <li>Reduced analysis time from <span class="outcome">hours to minutes</span> for typical experimental datasets</li>
-                    </ul>
-                    <p class="project-tools"><span class="tag">python</span><span class="tag">oop</span><span class="tag">scipy</span><span class="tag">pandas</span></p>
+                    <div class="project-content-wrapper">
+                        <div class="project-image">
+                            <img src="images/uvvis_output.png" alt="UV-Vis spectroscopy plot showing absorbance peaks with automated peak detection markers" loading="lazy">
+                        </div>
+                        <p class="project-meta">Research Tool · Object-Oriented Python</p>
+                        <p class="project-description">Object-oriented Python toolkit replacing manual Excel workflows for spectroscopy data processing, dramatically reducing analysis time.</p>
+                        <ul class="project-bullets">
+                            <li>Designed modular class architecture for spectra loading, processing, and analysis with clear separation of workflows</li>
+                            <li>Implemented automated peak detection, baseline correction, and batch processing capabilities</li>
+                            <li>Reduced analysis time from <span class="outcome">hours to minutes</span> for typical experimental datasets</li>
+                        </ul>
+                        <p class="project-tools"><span class="tag">python</span><span class="tag">oop</span><span class="tag">scipy</span><span class="tag">pandas</span></p>
+                    </div>
                 </article>
 
                 <article class="project">
@@ -666,14 +730,19 @@
                             <a href="https://github.com/ParamveerK/data-science-portfolio/tree/main/phd_stability_tests" target="_blank" rel="noopener noreferrer" aria-label="View Device Lifetime Analysis project on GitHub">↗ GitHub</a>
                         </div>
                     </div>
-                    <p class="project-meta">Research Tool · Object-Oriented Python</p>
-                    <p class="project-description">Object-oriented Python toolkit for analysing photoluminescence decay over time, replacing manual Excel workflows for photostability assessment.</p>
-                    <ul class="project-bullets">
-                        <li>Designed class architecture handling spectral data loading, timestamp parsing, and multi-wavelength integration</li>
-                        <li>Implemented stretched exponential fitting to extract decay parameters (τ, β) for material characterisation</li>
-                        <li>Reduced analysis time from <span class="outcome">30 minutes to seconds</span> per stability experiment, saving hours across 30+ experiments</li>
-                    </ul>
-                    <p class="project-tools"><span class="tag">python</span><span class="tag">oop</span><span class="tag">scipy</span><span class="tag">pandas</span></p>
+                    <div class="project-content-wrapper">
+                        <div class="project-image">
+                            <img src="images/stability_output.png" alt="Stretched exponential fit of photoluminescence decay data showing device stability over time" loading="lazy">
+                        </div>
+                        <p class="project-meta">Research Tool · Object-Oriented Python</p>
+                        <p class="project-description">Object-oriented Python toolkit for analysing photoluminescence decay over time, replacing manual Excel workflows for photostability assessment.</p>
+                        <ul class="project-bullets">
+                            <li>Designed class architecture handling spectral data loading, timestamp parsing, and multi-wavelength integration</li>
+                            <li>Implemented stretched exponential fitting to extract decay parameters (τ, β) for material characterisation</li>
+                            <li>Reduced analysis time from <span class="outcome">30 minutes to seconds</span> per stability experiment, saving hours across 30+ experiments</li>
+                        </ul>
+                        <p class="project-tools"><span class="tag">python</span><span class="tag">oop</span><span class="tag">scipy</span><span class="tag">pandas</span></p>
+                    </div>
                 </article>
             </section>
 
