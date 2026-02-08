@@ -676,6 +676,29 @@
 
                 <article class="project">
                     <div class="project-header">
+                        <h3>Have Your Say: RAG Pipeline for TfL Consultations</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ParamveerK/data-science-portfolio/tree/main/tfl-rag-pipeline" target="_blank" rel="noopener noreferrer" aria-label="View TfL RAG Pipeline project on GitHub">↗ GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-content-wrapper">
+                        <div class="project-image">
+                            <img src="images/tfl_rag_demo.png" alt="Screenshot showing RAG pipeline query results with citations from TfL consultation documents" loading="lazy">
+                        </div>
+                        <p class="project-meta">NLP · Retrieval-Augmented Generation</p>
+                        <p class="project-description">End-to-end RAG system that makes London's transport consultation documents searchable through natural language queries, running entirely locally with no API costs.</p>
+                        <ul class="project-bullets">
+                            <li>Scraped and processed <span class="outcome">1300+ consultation documents</span> from TfL's Have Your Say platform using BeautifulSoup for pdf text extraction</li>
+                            <li>Built embedding pipeline using sentence-transformers, chunking into 16,000+ segments and storing in ChromaDB vector database</li>
+                            <li>Integrated Llama 3.1 via Ollama for local LLM inference, implementing context retrieval to source documents</li>
+                            <li>Built a Streamlit chat interface, allowing multi-turn dialogues while maintaining accurate document retrieval</li>
+                        </ul>
+                        <p class="project-tools"><span class="tag">python</span><span class="tag">beautifulsoup</span><span class="tag">sentence-transformers</span><span class="tag">chromadb</span><span class="tag">ollama</span><span class="tag">streamlit</span></p>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <div class="project-header">
                         <h3>Which UKRI-funded research field gets the most patents?</h3>
                         <div class="project-links">
                             <a href="https://github.com/ParamveerK/data-science-portfolio/blob/main/ukri_classification/ukri_clustering_notebook.ipynb" target="_blank" rel="noopener noreferrer" aria-label="View UKRI Patent Analysis project on GitHub">↗ GitHub</a>
