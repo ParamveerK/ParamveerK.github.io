@@ -676,6 +676,29 @@
 
                 <article class="project">
                     <div class="project-header">
+                        <h3>Why did the UK pay £375 million to turn off the wind?</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ParamveerK/data-science-portfolio/blob/main/uk-windfarms/windfarm_curtailment_notebook.ipynb" target="_blank" rel="noopener noreferrer" aria-label="View UK Wind Curtailment project on GitHub">↗ GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-content-wrapper">
+                        <div class="project-image">
+                            <img src="images/windfarm-curtailment.gif" alt="Animated map of the UK showing wind farm curtailment events accumulating across 2025, with a counter tracking £375 million in wasted clean energy payments" loading="lazy">
+                        </div>
+                        <p class="project-meta">Energy Analytics · Geospatial Visualisation</p>
+                        <p class="project-description">End-to-end analysis of the UK's wind curtailment problem: where grid constraints force the National Energy System Operator (NESO) to pay wind farms to reduce their output, wasting clean energy that could have been generated.</p>
+                        <ul class="project-bullets">
+                            <li>Fetched full-year Balancing Mechanism data via the Elexon BMRS API, collecting BMU, BOALF, PN, and BOD datasets and combined with location data from Power Station Dictionary</li>
+                            <li>Processed multi-million row datasets in DuckDB with SQL joins to calculate curtailed energy per settlement period, applying bid-offer pricing to derive the financial cost of each curtailment event</li>
+                            <li>Built an animated geospatial visualisation in Flourish mapping curtailment events across 2025, revealing that <span class="outcome">virtually all curtailment occurs in Scotland north of the B6 boundary</span>, exposing the transmission bottleneck between Scottish generation and English demand</li>
+                            <li>Found that <span class="outcome">10.9 TWh was curtailed</span> out of a potential 81.4 TWh (a 13% reduction), costing <span class="outcome">£375 million</span> in direct constraint payments across the year</li>
+                        </ul>
+                        <p class="project-tools"><span class="tag">python</span><span class="tag">duckdb</span><span class="tag">sql</span><span class="tag">pandas</span><span class="tag">flourish</span></p>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <div class="project-header">
                         <h3>Have Your Say: RAG Pipeline for TfL Consultations</h3>
                         <div class="project-links">
                             <a href="https://github.com/ParamveerK/data-science-portfolio/tree/main/tfl-rag-pipeline" target="_blank" rel="noopener noreferrer" aria-label="View TfL RAG Pipeline project on GitHub">↗ GitHub</a>
