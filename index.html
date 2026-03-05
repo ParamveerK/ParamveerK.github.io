@@ -676,6 +676,24 @@
 
                 <article class="project">
                     <div class="project-header">
+                        <h3>Forecasting future wind curtailment costs</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ParamveerK/data-science-portfolio/blob/main/uk-windfarms/wind_forecast.ipynb" target="_blank" rel="noopener noreferrer" aria-label="View Wind Curtailment Forecasting project on GitHub">↗ GitHub</a>
+                        </div>
+                    </div>
+                    <p class="project-meta">Time Series Forecasting · Gradient Boosting</p>
+                    <p class="project-description">Gradient boosting models trained on a self-built BMRS dataset to forecast next-settlement-period curtailment costs for individual wind BMUs, with quantile regression to characterise prediction uncertainty.</p>
+                    <ul class="project-bullets">
+                        <li>Engineered lag features, rolling averages and cyclic time encoding, carefully respecting temporal ordering to avoid data leakage</li>
+                        <li>Trained LightGBM and XGBoost for both point and quantile regression (10th–90th percentile), evaluating with RMSE, calibration plots, and pinball loss</li>
+                        <li>Applied SHAP analysis to reveal that LightGBM relies on BMU identity while XGBoost favours geographic coordinates, a direct consequence of leaf-wise vs level-wise tree growth</li>
+                        <li>Walk-forward validation across 3 expanding folds confirmed <span class="outcome">LightGBM outperformed XGBoost across all metrics</span>, achieving lower pinball loss scores across all quantiles</li>
+                    </ul>
+                    <p class="project-tools"><span class="tag">python</span><span class="tag">lightgbm</span><span class="tag">xgboost</span><span class="tag">shap</span><span class="tag">scikit-learn</span><span class="tag">pandas</span></p>
+                </article>
+
+                <article class="project">
+                    <div class="project-header">
                         <h3>Why did the UK pay £375 million to turn off the wind?</h3>
                         <div class="project-links">
                             <a href="https://github.com/ParamveerK/data-science-portfolio/blob/main/uk-windfarms/windfarm_curtailment_notebook.ipynb" target="_blank" rel="noopener noreferrer" aria-label="View UK Wind Curtailment project on GitHub">↗ GitHub</a>
